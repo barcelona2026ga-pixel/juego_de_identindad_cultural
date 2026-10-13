@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kallpa Cultural: El Desafío del Perú Milenario</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="game-container">
+        <!-- Pantalla de Inicio -->
+        <section id="screen-start" class="screen active">
+            <div class="hero">
+                <span class="badge">Perú: una identidad que se desvanece</span>
+                <h1>Kallpa Cultural</h1>
+                <h2>El Desafío del Perú Milenario</h2>
+                <p>Demuestra tus conocimientos sobre la historia, costumbres, personajes y diversidad de nuestro Perú.</p>
+            </div>
+
+            <div class="level-selector">
+                <h3>Selecciona el Nivel de Dificultad:</h3>
+                <div class="btn-group">
+                    <button class="btn btn-primary" onclick="startGame('primaria')">
+                        <span class="icon">🎒</span>
+                        <span>Nivel Primaria</span>
+                        <small>20 Preguntas visuales y conceptos clave</small>
+                    </button>
+                    <button class="btn btn-secondary" onclick="startGame('secundaria')">
+                        <span class="icon">🏛️</span>
+                        <span>Nivel Secundaria</span>
+                        <small>20 Preguntas de Historia e Interculturalidad</small>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pantalla de Juego -->
+        <section id="screen-quiz" class="screen">
+            <!-- Barra Superior de Estado (HUD) -->
+            <div class="hud">
+                <div class="hud-item">
+                    <span class="hud-label">Nivel:</span>
+                    <span id="display-level" class="hud-value">Primaria</span>
+                </div>
+                <div class="hud-item">
+                    <span class="hud-label">Puntos:</span>
+                    <span id="display-score" class="hud-value">0</span>
+                </div>
+                <div class="hud-item">
+                    <span class="hud-label">Tiempo:</span>
+                    <span id="display-timer" class="hud-value">20s</span>
+                </div>
+            </div>
+
+            <!-- Progreso -->
+            <div class="progress-bar-container">
+                <div id="progress-bar" class="progress-bar"></div>
+            </div>
+
+            <!-- Contenedor de Pregunta -->
+            <div class="question-card">
+                <span id="question-category" class="category-tag">Historia y Personajes</span>
+                <h3 id="question-text">Cargando pregunta...</h3>
+
+                <!-- Opciones de Texto -->
+                <div id="options-text-container" class="options-grid text-mode"></div>
+
+                <!-- Opciones de Imágenes (Para preguntas visuales) -->
+                <div id="options-image-container" class="options-grid image-mode hidden"></div>
+            </div>
+
+            <!-- Retroalimentación Pedagógica -->
+            <div id="feedback-box" class="feedback-box hidden">
+                <div id="feedback-title" class="feedback-title">¡Correcto!</div>
+                <p id="feedback-text">Explicación sobre el tema cultural...</p>
+                <button class="btn btn-next" onclick="nextQuestion()">Siguiente Pregunta ➔</button>
+            </div>
+        </section>
+
+        <!-- Pantalla Final / Resultados -->
+        <section id="screen-result" class="screen">
+            <div class="result-card">
+                <div id="result-badge" class="result-badge">🏆</div>
+                <h2 id="result-title">¡Excelente Trabajo!</h2>
+                <p id="result-subtitle">Has demostrado un gran amor y conocimiento por el Perú.</p>
+
+                <div class="score-summary">
+                    <div class="summary-box">
+                        <span class="sum-number" id="final-score">0</span>
+                        <span class="sum-label">Solio-Puntos</span>
+                    </div>
+                    <div class="summary-box">
+                        <span class="sum-number" id="final-correct">0/0</span>
+                        <span class="sum-label">Aciertos</span>
+                    </div>
+                </div>
+
+                <button class="btn btn-primary" onclick="resetGame()">Volver a Jugar 🔄</button>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
